@@ -218,9 +218,13 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1615529489791-3aca47c5e22c?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=800&q=80"
                 alt="Luxury perfume atelier"
-                className="w-full h-96 lg:h-[540px] object-cover"
+                className="w-full h-64 sm:h-80 lg:h-[540px] object-cover"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80';
+                }}
               />
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 border border-gold/30 hidden lg:block" />
             </div>
