@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useAuth } from '../context/AuthContext';
 
 const inputClass =
   'w-full bg-white border border-cream-deeper text-charcoal font-sans text-sm px-4 py-3 focus:outline-none focus:border-gold transition-colors duration-200 placeholder:text-charcoal-soft';
@@ -11,10 +12,8 @@ const labelClass =
 const UserProfile = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+  const { currentUser, authLoading, logout, updateUserProfile, changeUserPassword } = useAuth();
 
-  const [currentUser, setCurrentUser] = useState(() =>
-    JSON.parse(localStorage.getItem('currentUser'))
-  );
   const [activeTab, setActiveTab] = useState('profile');
   const [isEditing, setIsEditing] = useState(false);
   const [saveMsg, setSaveMsg] = useState('');
@@ -31,80 +30,78 @@ const UserProfile = () => {
   const [passwordForm, setPasswordForm] = useState({ current: '', next: '', confirm: '' });
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!authLoading && !currentUser) {
       navigate('/login');
-      return;
     }
-    setEditForm({
-      name: currentUser.name || '',
-      email: currentUser.email || '',
-      phone: currentUser.phone || '',
-      address: currentUser.address || '',
-      city: currentUser.city || '',
-      state: currentUser.state || '',
-      zip: currentUser.zip || '',
-    });
-  }, [currentUser, navigate]);
+  }, [currentUser, authLoading, navigate]);
 
-  const updateUser = (updated) => {
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const idx = users.findIndex((u) => u.email === currentUser.email);
-    if (idx !== -1) users[idx] = updated;
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('currentUser', JSON.stringify(updated));
-    setCurrentUser(updated);
-  };
+  useEffect(() => {
+    if (currentUser) {
+      setEditForm({
+        name: currentUser.name || '',
+        email: currentUser.email || '',
+        phone: currentUser.phone || '',
+        address: currentUser.address || '',
+        city: currentUser.city || '',
+        state: currentUser.state || '',
+        zip: currentUser.zip || '',
+      });
+    }
+  }, [currentUser]);
 
   const notify = (msg) => {
     setSaveMsg(msg);
     setTimeout(() => setSaveMsg(''), 3500);
   };
 
-  const handlePictureUpload = (e) => {
+  const handlePictureUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onloadend = () => {
-      updateUser({ ...currentUser, avatar: reader.result });
-      notify('Profile picture updated.');
+    reader.onloadend = async () => {
+      try {
+        await updateUserProfile({ avatar: reader.result });
+        notify('Profile picture updated.');
+      } catch {
+        notify('Failed to update profile picture.');
+      }
     };
     reader.readAsDataURL(file);
   };
 
-  const handleSaveProfile = (e) => {
+  const handleSaveProfile = async (e) => {
     e.preventDefault();
-    updateUser({ ...currentUser, ...editForm });
-    setIsEditing(false);
-    notify('Profile updated successfully.');
+    try {
+      await updateUserProfile({ ...editForm });
+      setIsEditing(false);
+      notify('Profile updated successfully.');
+    } catch {
+      notify('Failed to save profile. Please try again.');
+    }
   };
 
-  const handlePasswordChange = (e) => {
+  const handlePasswordChange = async (e) => {
     e.preventDefault();
     setPwdError('');
-    if (passwordForm.current !== currentUser.password) {
-      setPwdError('Current password is incorrect.');
-      return;
-    }
-    if (passwordForm.next.length < 6) {
-      setPwdError('New password must be at least 6 characters.');
-      return;
-    }
     if (passwordForm.next !== passwordForm.confirm) {
       setPwdError('New passwords do not match.');
       return;
     }
-    updateUser({ ...currentUser, password: passwordForm.next });
-    setPasswordForm({ current: '', next: '', confirm: '' });
-    notify('Password changed successfully.');
+    try {
+      await changeUserPassword(passwordForm.current, passwordForm.next);
+      setPasswordForm({ current: '', next: '', confirm: '' });
+      notify('Password changed successfully.');
+    } catch (err) {
+      setPwdError(err?.message || 'Failed to change password.');
+    }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('currentUser');
-    setCurrentUser(null);
+  const handleLogout = async () => {
+    await logout();
     navigate('/login');
   };
 
-  if (!currentUser) return null;
+  if (authLoading || !currentUser) return null;
 
   const initials = currentUser.name
     ? currentUser.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
@@ -413,6 +410,7 @@ const UserProfile = () => {
                       onChange={(e) => setPasswordForm({ ...passwordForm, current: e.target.value })}
                       placeholder="••••••••"
                       className={inputClass}
+                      autoComplete="current-password"
                     />
                   </div>
                   <div>
@@ -425,6 +423,7 @@ const UserProfile = () => {
                       onChange={(e) => setPasswordForm({ ...passwordForm, next: e.target.value })}
                       placeholder="••••••••"
                       className={inputClass}
+                      autoComplete="new-password"
                     />
                     <p className="font-sans text-xs text-charcoal-soft mt-2">Minimum 6 characters</p>
                   </div>
@@ -437,6 +436,7 @@ const UserProfile = () => {
                       onChange={(e) => setPasswordForm({ ...passwordForm, confirm: e.target.value })}
                       placeholder="••••••••"
                       className={inputClass}
+                      autoComplete="new-password"
                     />
                   </div>
                   <button type="submit" className="btn-dark">
