@@ -5,7 +5,8 @@ export const products = [
     category: "Men",
     price: 189.00,
     originalPrice: 220.00,
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=600&q=80",
+    // Dark pine forest — confirmed non-branded, evokes woody-oriental darkness
+    image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80",
     description: "A commanding woody-oriental masterpiece. Dark, powerful, and unapologetically sophisticated.",
     scentNotes: { top: "Bergamot, Black Pepper", middle: "Oud, Leather", base: "Sandalwood, Amber" },
     rating: 4.9,
@@ -21,7 +22,8 @@ export const products = [
     category: "Women",
     price: 215.00,
     originalPrice: 260.00,
-    image: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=600&q=80",
+    // Hand holding a single peach rose — confirmed non-branded, matches rose fragrance
+    image: "https://images.unsplash.com/photo-1487530811176-3780de880c2d?auto=format&fit=crop&w=600&q=80",
     description: "A timeless floral elegy. The queen of roses dressed in the finest Bulgarian petals.",
     scentNotes: { top: "Lychee, Freesia", middle: "Bulgarian Rose, Peony", base: "Musk, White Cedar" },
     rating: 4.8,
@@ -37,7 +39,8 @@ export const products = [
     category: "Unisex",
     price: 165.00,
     originalPrice: 195.00,
-    image: "https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=600&q=80",
+    // Ethereal figure walking through misty forest — confirmed non-branded, evokes weightless/ethereal
+    image: "https://images.unsplash.com/photo-1490750967868-88df5691cc49?auto=format&fit=crop&w=600&q=80",
     description: "Weightless and ethereal. A minimalist composition that transcends boundaries.",
     scentNotes: { top: "White Tea, Aldehydes", middle: "Iris, Jasmine Sambac", base: "Vetiver, Cashmeran" },
     rating: 4.7,
@@ -53,7 +56,8 @@ export const products = [
     category: "Men",
     price: 199.00,
     originalPrice: 240.00,
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=600&q=80",
+    // Rugged mountain landscape — confirmed non-branded, evokes raw masculine untamed elegance
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
     description: "Raw masculinity refined. A leather fragrance that tells the story of untamed elegance.",
     scentNotes: { top: "Grapefruit, Lavender", middle: "Leather, Violet", base: "Vetiver, Oakmoss" },
     rating: 4.9,
@@ -69,7 +73,8 @@ export const products = [
     category: "Women",
     price: 245.00,
     originalPrice: 290.00,
-    image: "https://images.unsplash.com/photo-1615529489791-3aca47c5e22c?auto=format&fit=crop&w=600&q=80",
+    // Pink cherry blossoms close-up — confirmed non-branded, evokes evening floral sensuality
+    image: "https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&w=600&q=80",
     description: "An evening fragrance of rare jasmine blooms. Sensual, warm, and unforgettable.",
     scentNotes: { top: "Neroli, Bergamot", middle: "Grand Jasmine, Tuberose", base: "Vanilla, Benzoin" },
     rating: 5.0,
@@ -85,7 +90,8 @@ export const products = [
     category: "Unisex",
     price: 155.00,
     originalPrice: 180.00,
-    image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=600&q=80",
+    // Pristine beach and ocean — confirmed non-branded, perfectly matches sea salt/ocean theme
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
     description: "The ocean at dusk. Fresh, saline, and hauntingly beautiful.",
     scentNotes: { top: "Sea Salt, Citrus", middle: "Ambrette, Driftwood", base: "Ambergris, Musk" },
     rating: 4.6,
@@ -101,7 +107,8 @@ export const products = [
     category: "Men",
     price: 320.00,
     originalPrice: 380.00,
-    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80",
+    // Warm amber incense candle — confirmed non-branded, evokes Arabian oud/oriental richness
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=600&q=80",
     description: "The crown jewel of our collection. Pure Arabian oud, elevated to the highest art form.",
     scentNotes: { top: "Saffron, Rose Absolute", middle: "Agarwood, Sandalwood", base: "Amber, Tonka Bean" },
     rating: 4.9,
@@ -117,7 +124,8 @@ export const products = [
     category: "Women",
     price: 175.00,
     originalPrice: 210.00,
-    image: "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=600&q=80",
+    // White magnolia flowers — confirmed non-branded, perfectly matches the fragrance name
+    image: "https://images.unsplash.com/photo-1477511801984-4ad73fd04c71?auto=format&fit=crop&w=600&q=80",
     description: "Delicate white magnolia in full bloom. Graceful, pure, and utterly feminine.",
     scentNotes: { top: "Green Leaf, Lime", middle: "White Magnolia, Lily", base: "Soft Musk, White Woods" },
     rating: 4.7,
@@ -133,6 +141,7 @@ export const products = [
     category: "Unisex",
     price: 195.00,
     originalPrice: 230.00,
+    // Misty sunlit pine forest — confirmed non-branded, perfectly matches forest/mystique theme
     image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
     description: "Ancient forests and sacred smoke. A mystical journey through nature's deepest secrets.",
     scentNotes: { top: "Cardamom, Pink Pepper", middle: "Incense, Labdanum", base: "Dark Patchouli, Cedarwood" },
@@ -149,7 +158,8 @@ export const products = [
     category: "Women",
     price: 280.00,
     originalPrice: 330.00,
-    image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80",
+    // Golden sunrise mountain — confirmed non-branded, evokes luminous golden radiance
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=600&q=80",
     description: "Liquid gold captured in crystal. A luminous, radiant fragrance for the most special occasions.",
     scentNotes: { top: "Mandarin, Champagne", middle: "Golden Iris, Mimosa", base: "Vanilla, Amber Gold" },
     rating: 4.9,
@@ -165,7 +175,8 @@ export const products = [
     category: "Men",
     price: 220.00,
     originalPrice: 265.00,
-    image: "https://images.unsplash.com/photo-1527960669566-f882ba85e4f4?auto=format&fit=crop&w=600&q=80",
+    // Warm elegant candlelit scene — confirmed non-branded, evokes tobacco/rum gentleman's warmth
+    image: "https://images.unsplash.com/photo-1524234107056-9e420e00d3d1?auto=format&fit=crop&w=600&q=80",
     description: "A gentleman's reverie. Rich tobacco, fine rum, and the warmth of a rare library.",
     scentNotes: { top: "Rum, Davana", middle: "Tobacco Leaf, Honey", base: "Leather, Labdanum" },
     rating: 4.8,
@@ -181,6 +192,7 @@ export const products = [
     category: "Unisex",
     price: 145.00,
     originalPrice: 175.00,
+    // White wildflowers under night sky — confirmed non-branded, perfectly matches moonlit flowers
     image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=600&q=80",
     description: "Night-blooming flowers under a silver moon. Soft, romantic, and dreamlike.",
     scentNotes: { top: "Night-blooming Jasmine", middle: "Moon Lily, Violet", base: "Soft Musk, Sandalwood" },
