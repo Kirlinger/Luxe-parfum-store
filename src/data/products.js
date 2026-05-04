@@ -42,8 +42,8 @@ export const products = [
     category: "Men",
     price: 125.00,
     originalPrice: 150.00,
-    // Pexels photo: luxury men's cologne bottle on textured fabric
-    image: "https://images.pexels.com/photos/36779952/pexels-photo-36779952.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // User-provided official Armani Stronger With You campaign image
+    image: "https://github.com/user-attachments/assets/786ad428-ef2a-44ef-931a-dcb0da2c507b",
     description: "A spiced chestnut sweetness wrapped in warm woods. Confident, charismatic, and irresistibly modern. The signature of a man who knows his worth.",
     scentNotes: { top: "Pink Pepper, Cardamom, Violet Leaf", middle: "Chestnut, Salvia, Lavender", base: "Amber, Cedar, Sandalwood, Vanilla" },
     rating: 4.8,
