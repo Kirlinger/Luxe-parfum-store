@@ -19,7 +19,7 @@ const ProductForm = ({ onSubmit }) => {
     <form onSubmit={handleSubmit} className="space-y-5 max-w-lg">
       <div>
         <label className={labelClass}>Product Name</label>
-        <input name="name" placeholder="e.g. Noir Absolu" required className={inputClass} />
+        <input name="name" placeholder="e.g. Dior Sauvage" required className={inputClass} />
       </div>
       <div className="grid grid-cols-2 gap-4">
         <div>
