@@ -32,6 +32,7 @@ const UserProfile = () => {
   useEffect(() => {
     if (!authLoading && !currentUser) {
       navigate('/login');
+      return;
     }
   }, [currentUser, authLoading, navigate]);
 
