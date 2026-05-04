@@ -68,10 +68,26 @@ const whyChooseUs = [
   },
 ];
 
+const bestSellersBgs = [
+  'https://images.pexels.com/photos/34882894/pexels-photo-34882894.jpeg?auto=compress&cs=tinysrgb&w=1200',   // Dior Sauvage
+  'https://github.com/user-attachments/assets/23187be4-1238-49e1-8270-58c63298889d',                         // Bleu de Chanel
+  'https://github.com/user-attachments/assets/9bb85de7-29c7-4c78-8fb5-ba1ebb78e56c',                         // Armani Stronger With You
+  'https://github.com/user-attachments/assets/9bcf87c5-a357-4359-ad34-b37d7222564b',                         // Tom Ford Tobacco Vanille
+  'https://images.pexels.com/photos/8516275/pexels-photo-8516275.jpeg?auto=compress&cs=tinysrgb&w=1200',     // Versace Eros
+];
+
 const Home = () => {
   const [visibleSection, setVisibleSection] = useState({});
+  const [bgIndex, setBgIndex] = useState(0);
   const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 4);
   const bestSellers = products.filter((p) => p.isBestSeller).slice(0, 4);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % bestSellersBgs.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -138,19 +154,101 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Stats Bar ── */}
-      <section className="bg-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* ── Trust / Value Cards ── */}
+      <section
+        id="trust"
+        data-observe
+        className={`bg-charcoal py-14 transition-all duration-700 ${visibleSection.trust ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { value: '35+', label: 'Years of Craft' },
-              { value: '120+', label: 'Unique Fragrances' },
-              { value: '50K+', label: 'Happy Clients' },
-              { value: '40+', label: 'Countries Shipped' },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <p className="font-serif text-3xl text-gold font-light mb-1">{value}</p>
-                <p className="font-sans text-xs tracking-widest uppercase text-white/40">{label}</p>
+              {
+                label: 'Premium Fragrances',
+                sub: 'Authentic luxury scents',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Curated Collection',
+                sub: 'Handpicked by experts',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 2C8 8 5 11 5 15a7 7 0 0014 0c0-4-3-7-7-13z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Fast U.S. Shipping',
+                sub: 'Swift & discreet delivery',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" strokeLinejoin="round" strokeLinecap="round" />
+                    <circle cx="5.5" cy="18.5" r="1.5" />
+                    <circle cx="18.5" cy="18.5" r="1.5" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Luxury Experience',
+                sub: 'Elevated from first click',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M2 7l5 5 5-9 5 9 5-5" strokeLinejoin="round" strokeLinecap="round" />
+                    <path d="M4 20h16" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Secure Checkout',
+                sub: 'Encrypted & protected',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 018 0v4" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Exclusive Scents',
+                sub: 'Hard-to-find rarities',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Handpicked Perfumes',
+                sub: 'Quality over quantity',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Modern Elegance',
+                sub: 'Timeless refined style',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M3 17L7 7l5 8 4-5 5 7" strokeLinejoin="round" strokeLinecap="round" />
+                    <circle cx="12" cy="5" r="2" />
+                  </svg>
+                ),
+              },
+            ].map(({ label, sub, icon }) => (
+              <div
+                key={label}
+                className="group flex flex-col items-center text-center p-6 border border-white/5 hover:border-gold/40 transition-all duration-400 hover:scale-[1.03]"
+                style={{ background: 'linear-gradient(160deg, #1e1e1e 0%, #161310 100%)', boxShadow: '0 2px 16px rgba(0,0,0,0.3)' }}
+              >
+                <span className="text-gold/70 group-hover:text-gold transition-colors duration-300 mb-3">{icon}</span>
+                <p className="font-serif text-sm text-white font-light tracking-wide mb-1">{label}</p>
+                <p className="font-sans text-[10px] tracking-widest uppercase text-white/35 group-hover:text-white/55 transition-colors duration-300">{sub}</p>
               </div>
             ))}
           </div>
@@ -183,16 +281,21 @@ const Home = () => {
       </section>
 
       {/* ── Best Sellers Banner ── */}
-      <section
-        className="relative py-24 overflow-hidden"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=80')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
+      <section className="relative py-24 overflow-hidden">
+        {/* Fade slideshow backgrounds */}
+        {bestSellersBgs.map((url, i) => (
+          <div
+            key={url}
+            aria-hidden="true"
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url('${url}')`,
+              opacity: i === bgIndex ? 1 : 0,
+              filter: 'blur(6px)',
+              transform: 'scale(1.08)',
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-charcoal/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -218,11 +321,87 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1615529489791-3aca47c5e22c?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=800&q=80"
                 alt="Luxury perfume atelier"
-                className="w-full h-96 lg:h-[540px] object-cover"
+                className="w-full h-64 sm:h-80 lg:h-[540px] object-cover"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80';
+                }}
               />
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 border border-gold/30 hidden lg:block" />
+              <div
+                className="absolute -bottom-6 -right-6 w-48 h-48 hidden lg:flex items-center justify-center overflow-hidden transition-transform duration-700 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(145deg, #111 0%, #1e1a14 60%, #111 100%)',
+                  border: '1px solid rgba(201,169,110,0.45)',
+                  boxShadow: '0 0 28px rgba(201,169,110,0.18), inset 0 0 18px rgba(201,169,110,0.07)',
+                }}
+              >
+                {/* Luxury brand mark — inline SVG */}
+                <svg
+                  viewBox="0 0 192 192"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-full h-full"
+                  aria-label="Luxe Parfum brand mark"
+                >
+                  {/* Radial glow */}
+                  <defs>
+                    <radialGradient id="lglow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="#C9A96E" stopOpacity="0" />
+                    </radialGradient>
+                    <linearGradient id="lgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#E8D5B0" />
+                      <stop offset="50%" stopColor="#C9A96E" />
+                      <stop offset="100%" stopColor="#A07B40" />
+                    </linearGradient>
+                  </defs>
+                  {/* Background glow */}
+                  <circle cx="96" cy="96" r="88" fill="url(#lglow)" />
+                  {/* Outer decorative ring */}
+                  <circle cx="96" cy="96" r="78" fill="none" stroke="url(#lgrad)" strokeWidth="0.6" strokeDasharray="3 5" />
+                  {/* Inner decorative ring */}
+                  <circle cx="96" cy="96" r="66" fill="none" stroke="#C9A96E" strokeWidth="0.4" opacity="0.5" />
+                  {/* Horizontal rules */}
+                  <line x1="18" y1="96" x2="55" y2="96" stroke="url(#lgrad)" strokeWidth="0.8" />
+                  <line x1="137" y1="96" x2="174" y2="96" stroke="url(#lgrad)" strokeWidth="0.8" />
+                  {/* Diamond accent left */}
+                  <polygon points="51,96 55,92 59,96 55,100" fill="#C9A96E" opacity="0.8" />
+                  {/* Diamond accent right */}
+                  <polygon points="133,96 137,92 141,96 137,100" fill="#C9A96E" opacity="0.8" />
+                  {/* Monogram "LP" */}
+                  <text
+                    x="96"
+                    y="108"
+                    textAnchor="middle"
+                    fontFamily="Georgia, serif"
+                    fontSize="42"
+                    fontWeight="300"
+                    letterSpacing="6"
+                    fill="url(#lgrad)"
+                  >
+                    LP
+                  </text>
+                  {/* Wordmark beneath */}
+                  <text
+                    x="96"
+                    y="128"
+                    textAnchor="middle"
+                    fontFamily="'Montserrat', sans-serif"
+                    fontSize="7"
+                    fontWeight="400"
+                    letterSpacing="5"
+                    fill="#C9A96E"
+                    opacity="0.75"
+                  >
+                    LUXE PARFUM
+                  </text>
+                  {/* Top ornament */}
+                  <line x1="79" y1="62" x2="113" y2="62" stroke="#C9A96E" strokeWidth="0.5" opacity="0.6" />
+                  <circle cx="96" cy="58" r="2.5" fill="none" stroke="#C9A96E" strokeWidth="0.7" opacity="0.7" />
+                  <circle cx="96" cy="58" r="1" fill="#C9A96E" opacity="0.6" />
+                </svg>
+              </div>
             </div>
             <div>
               <p className="section-subtitle mb-4">Our Story</p>
