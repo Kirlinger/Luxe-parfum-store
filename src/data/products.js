@@ -60,8 +60,8 @@ export const products = [
     category: "Unisex",
     price: 370.00,
     originalPrice: 420.00,
-    // Pexels photo: elegant luxury perfume bottle with gold cap
-    image: "https://images.pexels.com/photos/11711807/pexels-photo-11711807.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // User-provided Tom Ford Tobacco Vanille bottle photo
+    image: "https://github.com/user-attachments/assets/9bcf87c5-a357-4359-ad34-b37d7222564b",
     description: "The scent of an exclusive private gentleman's club. Rich, creamy tobacco laced with warm vanilla and exotic spice — the ultimate luxury statement.",
     scentNotes: { top: "Tobacco Leaf, Spicy Notes", middle: "Vanilla, Cacao, Tonka Bean", base: "Dried Fruits, Wood Sap, Warm Spice" },
     rating: 4.9,
