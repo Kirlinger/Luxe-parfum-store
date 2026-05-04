@@ -154,19 +154,101 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ── Stats Bar ── */}
-      <section className="bg-charcoal">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {/* ── Trust / Value Cards ── */}
+      <section
+        id="trust"
+        data-observe
+        className={`bg-charcoal py-14 transition-all duration-700 ${visibleSection.trust ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
             {[
-              { value: '35+', label: 'Years of Craft' },
-              { value: '120+', label: 'Unique Fragrances' },
-              { value: '50K+', label: 'Happy Clients' },
-              { value: '40+', label: 'Countries Shipped' },
-            ].map(({ value, label }) => (
-              <div key={label}>
-                <p className="font-serif text-3xl text-gold font-light mb-1">{value}</p>
-                <p className="font-sans text-xs tracking-widest uppercase text-white/40">{label}</p>
+              {
+                label: 'Premium Fragrances',
+                sub: 'Authentic luxury scents',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Curated Collection',
+                sub: 'Handpicked by experts',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 2C8 8 5 11 5 15a7 7 0 0014 0c0-4-3-7-7-13z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Fast U.S. Shipping',
+                sub: 'Swift & discreet delivery',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" strokeLinejoin="round" strokeLinecap="round" />
+                    <circle cx="5.5" cy="18.5" r="1.5" />
+                    <circle cx="18.5" cy="18.5" r="1.5" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Luxury Experience',
+                sub: 'Elevated from first click',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M2 7l5 5 5-9 5 9 5-5" strokeLinejoin="round" strokeLinecap="round" />
+                    <path d="M4 20h16" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Secure Checkout',
+                sub: 'Encrypted & protected',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <rect x="5" y="11" width="14" height="10" rx="2" />
+                    <path d="M8 11V7a4 4 0 018 0v4" strokeLinecap="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Exclusive Scents',
+                sub: 'Hard-to-find rarities',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Handpicked Perfumes',
+                sub: 'Quality over quantity',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                label: 'Modern Elegance',
+                sub: 'Timeless refined style',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-6 h-6">
+                    <path d="M3 17L7 7l5 8 4-5 5 7" strokeLinejoin="round" strokeLinecap="round" />
+                    <circle cx="12" cy="5" r="2" />
+                  </svg>
+                ),
+              },
+            ].map(({ label, sub, icon }) => (
+              <div
+                key={label}
+                className="group flex flex-col items-center text-center p-6 border border-white/5 hover:border-gold/40 transition-all duration-400 hover:scale-[1.03]"
+                style={{ background: 'linear-gradient(160deg, #1e1e1e 0%, #161310 100%)', boxShadow: '0 2px 16px rgba(0,0,0,0.3)' }}
+              >
+                <span className="text-gold/70 group-hover:text-gold transition-colors duration-300 mb-3">{icon}</span>
+                <p className="font-serif text-sm text-white font-light tracking-wide mb-1">{label}</p>
+                <p className="font-sans text-[10px] tracking-widest uppercase text-white/35 group-hover:text-white/55 transition-colors duration-300">{sub}</p>
               </div>
             ))}
           </div>
