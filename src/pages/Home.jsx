@@ -68,10 +68,26 @@ const whyChooseUs = [
   },
 ];
 
+const bestSellersBgs = [
+  'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1547887538-047f0b77c06f?auto=format&fit=crop&w=1600&q=80',
+  'https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1600&q=80',
+];
+
 const Home = () => {
   const [visibleSection, setVisibleSection] = useState({});
+  const [bgIndex, setBgIndex] = useState(0);
   const featuredProducts = products.filter((p) => p.isFeatured).slice(0, 4);
   const bestSellers = products.filter((p) => p.isBestSeller).slice(0, 4);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setBgIndex((prev) => (prev + 1) % bestSellersBgs.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -183,16 +199,18 @@ const Home = () => {
       </section>
 
       {/* ── Best Sellers Banner ── */}
-      <section
-        className="relative py-24 overflow-hidden"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=80')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
-        }}
-      >
+      <section className="relative py-24 overflow-hidden">
+        {/* Fade slideshow backgrounds */}
+        {bestSellersBgs.map((url, i) => (
+          <div
+            key={url}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url('${url}')`,
+              opacity: i === bgIndex ? 1 : 0,
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-charcoal/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -226,7 +244,17 @@ const Home = () => {
                   e.currentTarget.src = 'https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80';
                 }}
               />
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-gold/10 border border-gold/30 hidden lg:block" />
+              <div className="absolute -bottom-6 -right-6 w-48 h-48 border border-gold/30 hidden lg:block overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=400&q=80"
+                  alt="Luxury fragrance detail"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80';
+                  }}
+                />
+              </div>
             </div>
             <div>
               <p className="section-subtitle mb-4">Our Story</p>
