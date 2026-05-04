@@ -69,11 +69,11 @@ const whyChooseUs = [
 ];
 
 const bestSellersBgs = [
-  'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1600&q=80',
-  'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80',
-  'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1600&q=80',
-  'https://images.unsplash.com/photo-1547887538-047f0b77c06f?auto=format&fit=crop&w=1600&q=80',
-  'https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=1600&q=80',
+  'https://images.pexels.com/photos/34882894/pexels-photo-34882894.jpeg?auto=compress&cs=tinysrgb&w=1200',   // Dior Sauvage
+  'https://github.com/user-attachments/assets/23187be4-1238-49e1-8270-58c63298889d',                         // Bleu de Chanel
+  'https://github.com/user-attachments/assets/9bb85de7-29c7-4c78-8fb5-ba1ebb78e56c',                         // Armani Stronger With You
+  'https://github.com/user-attachments/assets/9bcf87c5-a357-4359-ad34-b37d7222564b',                         // Tom Ford Tobacco Vanille
+  'https://images.pexels.com/photos/8516275/pexels-photo-8516275.jpeg?auto=compress&cs=tinysrgb&w=1200',     // Versace Eros
 ];
 
 const Home = () => {
@@ -209,6 +209,8 @@ const Home = () => {
             style={{
               backgroundImage: `url('${url}')`,
               opacity: i === bgIndex ? 1 : 0,
+              filter: 'blur(6px)',
+              transform: 'scale(1.08)',
             }}
           />
         ))}
@@ -247,12 +249,12 @@ const Home = () => {
               />
               <div className="absolute -bottom-6 -right-6 w-48 h-48 border border-gold/30 hidden lg:block overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1601662528567-526cd06f6582?auto=format&fit=crop&w=400&q=80"
-                  alt="Luxury fragrance detail"
+                  src="https://github.com/user-attachments/assets/9bcf87c5-a357-4359-ad34-b37d7222564b"
+                  alt="Tom Ford Tobacco Vanille — luxury perfume detail"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80';
+                    e.currentTarget.src = 'https://images.pexels.com/photos/34882894/pexels-photo-34882894.jpeg?auto=compress&cs=tinysrgb&w=400';
                   }}
                 />
               </div>
