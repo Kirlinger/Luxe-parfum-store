@@ -20,7 +20,7 @@ const Register = () => {
       return;
     }
 
-    const newUser = { name, email, password };
+    const newUser = { name, email, password, registeredAt: new Date().toISOString() };
     users.push(newUser);
     localStorage.setItem('users', JSON.stringify(users));
     localStorage.setItem('currentUser', JSON.stringify(newUser));
@@ -74,7 +74,7 @@ const Register = () => {
                   name="name"
                   type="text"
                   required
-                  placeholder="Michael Carter"
+                  placeholder="Phanol Louis"
                   className="luxury-input"
                 />
               </div>

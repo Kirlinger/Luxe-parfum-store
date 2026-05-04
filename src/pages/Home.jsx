@@ -8,21 +8,21 @@ import { products } from '../data/products';
 const testimonials = [
   {
     id: 1,
-    name: "Daniel Brooks",
+    name: "Stevenson Pierre",
     role: "Watch Collector, New York",
     text: "Luxe Parfum is the only house that truly understands what luxury means. Noir Absolu has become my signature scent.",
     rating: 5,
   },
   {
     id: 2,
-    name: "James Anderson",
+    name: "Jean Wilner",
     role: "Executive, Chicago",
     text: "Oud Royale is exceptional — complex, dignified, and utterly unique. Worth every penny and more.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Michael Carter",
+    name: "Stanley Toussaint",
     role: "Creative Director, Los Angeles",
     text: "Soir de Jasmin stopped me in my tracks at a gallery opening. Three people asked what I was wearing.",
     rating: 5,
@@ -328,11 +328,11 @@ const Home = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="luxury-label">First Name</label>
-                  <input className="luxury-input" placeholder="Michael" />
+                  <input className="luxury-input" placeholder="Phanol" />
                 </div>
                 <div>
                   <label className="luxury-label">Last Name</label>
-                  <input className="luxury-input" placeholder="Carter" />
+                  <input className="luxury-input" placeholder="Louis" />
                 </div>
               </div>
               <div>

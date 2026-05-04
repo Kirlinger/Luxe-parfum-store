@@ -94,16 +94,16 @@ const Checkout = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
                       <label className={labelClass}>First Name</label>
-                      <input required placeholder="Michael" className={inputClass} />
+                      <input required placeholder="Phanol" className={inputClass} />
                     </div>
                     <div>
                       <label className={labelClass}>Last Name</label>
-                      <input required placeholder="Carter" className={inputClass} />
+                      <input required placeholder="Louis" className={inputClass} />
                     </div>
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Email Address</label>
-                    <input type="email" required placeholder="michael@example.com" className={inputClass} />
+                    <input type="email" required placeholder="phanol@example.com" className={inputClass} />
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Phone Number</label>
@@ -135,7 +135,7 @@ const Checkout = () => {
                   <h2 className="font-serif text-2xl text-charcoal mb-8">Payment Details</h2>
                   <div className="mb-5">
                     <label className={labelClass}>Cardholder Name</label>
-                    <input required placeholder="Michael Carter" className={inputClass} />
+                    <input required placeholder="Phanol Louis" className={inputClass} />
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Card Number</label>
