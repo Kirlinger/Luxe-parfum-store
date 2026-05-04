@@ -42,8 +42,7 @@ export const products = [
     category: "Men",
     price: 125.00,
     originalPrice: 150.00,
-    // User-provided official Armani Stronger With You campaign image
-    image: "https://github.com/user-attachments/assets/786ad428-ef2a-44ef-931a-dcb0da2c507b",
+    image: "https://github.com/user-attachments/assets/9bb85de7-29c7-4c78-8fb5-ba1ebb78e56c",
     description: "A spiced chestnut sweetness wrapped in warm woods. Confident, charismatic, and irresistibly modern. The signature of a man who knows his worth.",
     scentNotes: { top: "Pink Pepper, Cardamom, Violet Leaf", middle: "Chestnut, Salvia, Lavender", base: "Amber, Cedar, Sandalwood, Vanilla" },
     rating: 4.8,
