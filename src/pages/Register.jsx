@@ -2,29 +2,48 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
+  const { register } = useAuth();
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const password = formData.get('password');
-
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    if (users.find((u) => u.email === email)) {
-      setError('An account with this email already exists.');
-      return;
+  const getErrorMessage = (err) => {
+    const code = err?.code || '';
+    if (code === 'auth/email-already-in-use') {
+      return 'An account with this email already exists.';
     }
+    if (code === 'auth/weak-password') {
+      return 'Password must be at least 6 characters.';
+    }
+    if (code === 'auth/invalid-email') {
+      return 'Please enter a valid email address.';
+    }
+    if (code === 'auth/network-request-failed') {
+      return 'Network error. Please check your connection and try again.';
+    }
+    return err?.message || 'Registration failed. Please try again.';
+  };
 
-    const newUser = { name, email, password, registeredAt: new Date().toISOString() };
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    localStorage.setItem('currentUser', JSON.stringify(newUser));
-    navigate('/profile');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    try {
+      await register(name, email, password);
+      navigate('/profile');
+    } catch (err) {
+      setPassword('');
+      setError(getErrorMessage(err));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -67,41 +86,60 @@ const Register = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" autoComplete="off" noValidate>
               <div>
-                <label className="luxury-label">Full Name</label>
+                <label className="luxury-label" htmlFor="reg-name">
+                  Full Name
+                </label>
                 <input
-                  name="name"
+                  id="reg-name"
                   type="text"
                   required
                   placeholder="Phanol Louis"
                   className="luxury-input"
+                  autoComplete="off"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div>
-                <label className="luxury-label">Email Address</label>
+                <label className="luxury-label" htmlFor="reg-email">
+                  Email Address
+                </label>
                 <input
-                  name="email"
+                  id="reg-email"
                   type="email"
                   required
                   placeholder="your@email.com"
                   className="luxury-input"
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
-                <label className="luxury-label">Password</label>
+                <label className="luxury-label" htmlFor="reg-password">
+                  Password
+                </label>
                 <input
-                  name="password"
+                  id="reg-password"
                   type="password"
                   required
-                  placeholder="••••••••"
                   minLength={6}
+                  placeholder="••••••••"
                   className="luxury-input"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
                 <p className="font-sans text-xs text-charcoal-soft mt-2">Minimum 6 characters</p>
               </div>
-              <button type="submit" className="btn-dark w-full text-center mt-2">
-                Create Account
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-dark w-full text-center mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Creating Account…' : 'Create Account'}
               </button>
             </form>
 
@@ -115,14 +153,20 @@ const Register = () => {
             <div className="mt-8 text-center">
               <p className="font-sans text-sm text-charcoal-soft">
                 Already a member?{' '}
-                <Link to="/login" className="text-gold hover:text-gold-dark transition-colors font-semibold">
+                <Link
+                  to="/login"
+                  className="text-gold hover:text-gold-dark transition-colors font-semibold"
+                >
                   Sign in
                 </Link>
               </p>
             </div>
 
             <div className="mt-10 pt-8 border-t border-cream-dark text-center">
-              <Link to="/" className="font-sans text-xs tracking-widest uppercase text-charcoal-soft hover:text-gold transition-colors">
+              <Link
+                to="/"
+                className="font-sans text-xs tracking-widest uppercase text-charcoal-soft hover:text-gold transition-colors"
+              >
                 ← Return to Store
               </Link>
             </div>

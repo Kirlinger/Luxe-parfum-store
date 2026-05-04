@@ -2,25 +2,49 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const getErrorMessage = (err) => {
+    const code = err?.code || '';
+    if (
+      code === 'auth/user-not-found' ||
+      code === 'auth/wrong-password' ||
+      code === 'auth/invalid-credential' ||
+      code === 'auth/invalid-email'
+    ) {
+      return 'Invalid email or password.';
+    }
+    if (code === 'auth/too-many-requests') {
+      return 'Too many failed attempts. Please try again later.';
+    }
+    if (code === 'auth/network-request-failed') {
+      return 'Network error. Please check your connection and try again.';
+    }
+    return err?.message || 'Sign in failed. Please try again.';
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
-
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find((u) => u.email === email && u.password === password);
-
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
+    setError('');
+    setLoading(true);
+    try {
+      await login(email, password, remember);
       navigate('/profile');
-    } else {
-      setError('Invalid email or password.');
+    } catch (err) {
+      setPassword('');
+      setError(getErrorMessage(err));
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -64,43 +88,80 @@ const Login = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" autoComplete="off" noValidate>
               <div>
-                <label className="luxury-label">Email Address</label>
+                <label className="luxury-label" htmlFor="login-email">
+                  Email Address
+                </label>
                 <input
-                  name="email"
+                  id="login-email"
                   type="email"
                   required
                   placeholder="your@email.com"
                   className="luxury-input"
+                  autoComplete="off"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
-                <label className="luxury-label">Password</label>
+                <label className="luxury-label" htmlFor="login-password">
+                  Password
+                </label>
                 <input
-                  name="password"
+                  id="login-password"
                   type="password"
                   required
                   placeholder="••••••••"
                   className="luxury-input"
+                  autoComplete="new-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn-dark w-full text-center mt-2">
-                Sign In
+
+              <div className="flex items-center gap-3">
+                <input
+                  id="remember-me"
+                  type="checkbox"
+                  checked={remember}
+                  onChange={(e) => setRemember(e.target.checked)}
+                  className="w-4 h-4 cursor-pointer accent-gold"
+                />
+                <label
+                  htmlFor="remember-me"
+                  className="font-sans text-xs tracking-widest uppercase text-charcoal-soft cursor-pointer select-none"
+                >
+                  Remember Me
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-dark w-full text-center mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Signing In…' : 'Sign In'}
               </button>
             </form>
 
             <div className="mt-8 text-center">
               <p className="font-sans text-sm text-charcoal-soft">
                 New to Luxe Parfum?{' '}
-                <Link to="/register" className="text-gold hover:text-gold-dark transition-colors font-semibold">
+                <Link
+                  to="/register"
+                  className="text-gold hover:text-gold-dark transition-colors font-semibold"
+                >
                   Create an account
                 </Link>
               </p>
             </div>
 
             <div className="mt-10 pt-8 border-t border-cream-dark text-center">
-              <Link to="/" className="font-sans text-xs tracking-widest uppercase text-charcoal-soft hover:text-gold transition-colors">
+              <Link
+                to="/"
+                className="font-sans text-xs tracking-widest uppercase text-charcoal-soft hover:text-gold transition-colors"
+              >
                 ← Return to Store
               </Link>
             </div>

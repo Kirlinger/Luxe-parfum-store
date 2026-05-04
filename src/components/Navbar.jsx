@@ -1,11 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
+  const { currentUser } = useAuth();
+
+  const accountLabel = currentUser
+    ? currentUser.name?.split(' ')[0] || 'My Account'
+    : 'Sign In';
+  const accountTo = currentUser ? '/profile' : '/login';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -68,10 +75,10 @@ const Navbar = () => {
           {/* Right actions */}
           <div className="hidden md:flex items-center space-x-6">
             <Link
-              to="/login"
+              to={accountTo}
               className="font-sans text-xs tracking-[0.2em] uppercase text-white/80 hover:text-gold transition-colors duration-200"
             >
-              Account
+              {accountLabel}
             </Link>
             <Link
               to="/cart"
@@ -130,11 +137,11 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link
-                to="/login"
+                to={accountTo}
                 onClick={() => setMenuOpen(false)}
                 className="font-sans text-xs tracking-[0.2em] uppercase text-white/80 hover:text-gold transition-colors duration-200"
               >
-                Account
+                {accountLabel}
               </Link>
             </div>
           </div>
