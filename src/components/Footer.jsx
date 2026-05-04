@@ -1,4 +1,23 @@
 import { Link } from 'react-router-dom';
+import { FaInstagram, FaFacebookF, FaPinterestP, FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal, FaCcApplePay } from 'react-icons/fa';
+import { FaTiktok, FaXTwitter, FaGooglePay } from 'react-icons/fa6';
+
+const socialLinks = [
+  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com' },
+  { icon: FaFacebookF, label: 'Facebook', href: 'https://facebook.com' },
+  { icon: FaPinterestP, label: 'Pinterest', href: 'https://pinterest.com' },
+  { icon: FaTiktok, label: 'TikTok', href: 'https://tiktok.com' },
+  { icon: FaXTwitter, label: 'X (Twitter)', href: 'https://x.com' },
+];
+
+const paymentIcons = [
+  { icon: FaCcVisa, label: 'Visa' },
+  { icon: FaCcMastercard, label: 'Mastercard' },
+  { icon: FaCcAmex, label: 'American Express' },
+  { icon: FaCcPaypal, label: 'PayPal' },
+  { icon: FaCcApplePay, label: 'Apple Pay' },
+  { icon: FaGooglePay, label: 'Google Pay' },
+];
 
 const Footer = () => (
   <footer className="bg-charcoal text-white">
@@ -86,27 +105,35 @@ const Footer = () => (
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Social & Payment */}
           <div>
             <h4 className="font-sans text-xs tracking-[0.3em] uppercase text-gold mb-6 font-semibold">Follow Us</h4>
-            <div className="flex space-x-4">
-              {['Instagram', 'Facebook', 'Pinterest'].map((social) => (
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map(({ icon: Icon, label, href }) => (
                 <a
-                  key={social}
-                  href="#"
-                  className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/50 hover:border-gold hover:text-gold transition-all duration-200"
-                  aria-label={social}
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-9 h-9 border border-white/20 flex items-center justify-center text-white/50 hover:border-gold hover:text-gold hover:shadow-[0_0_8px_rgba(184,148,84,0.4)] transition-all duration-300"
                 >
-                  <span className="font-sans text-xs">{social[0]}</span>
+                  <Icon size={16} />
                 </a>
               ))}
             </div>
+
             <div className="mt-8">
-              <p className="font-sans text-xs tracking-widest uppercase text-gold mb-3 font-semibold">We Accept</p>
-              <div className="flex space-x-2">
-                {['VISA', 'MC', 'AMEX', 'PayPal'].map((card) => (
-                  <span key={card} className="border border-white/20 text-white/40 font-sans text-[10px] px-2 py-1">
-                    {card}
+              <p className="font-sans text-xs tracking-widest uppercase text-gold mb-4 font-semibold">We Accept</p>
+              <div className="flex flex-wrap gap-2">
+                {paymentIcons.map(({ icon: Icon, label }) => (
+                  <span
+                    key={label}
+                    aria-label={label}
+                    title={label}
+                    className="text-white/40 hover:text-white/70 transition-colors duration-200"
+                  >
+                    <Icon size={36} />
                   </span>
                 ))}
               </div>
