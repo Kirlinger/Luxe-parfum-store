@@ -11,6 +11,7 @@ const ShoppingCart = () => {
     const updatedCart = cart.filter((item) => item.id !== id);
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
   };
 
   const handleQuantityChange = (id, quantity) => {
@@ -19,6 +20,7 @@ const ShoppingCart = () => {
     );
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
   };
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * (item.quantity || 1), 0);

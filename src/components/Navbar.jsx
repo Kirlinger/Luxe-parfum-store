@@ -14,8 +14,13 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartCount(cart.reduce((sum, item) => sum + (item.quantity || 1), 0));
+    const updateCount = () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      setCartCount(cart.reduce((sum, item) => sum + (item.quantity || 1), 0));
+    };
+    updateCount();
+    window.addEventListener('cartUpdated', updateCount);
+    return () => window.removeEventListener('cartUpdated', updateCount);
   }, [location]);
 
   const navLinks = [

@@ -6,7 +6,8 @@ export const products = [
     category: "Men",
     price: 139.00,
     originalPrice: 165.00,
-    image: "https://images.pexels.com/photos/7487831/pexels-photo-7487831.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Actual Dior Sauvage bottle — confirmed Pexels photo "Sauvage Dior Perfume Bottle in Dramatic Lighting"
+    image: "https://images.pexels.com/photos/34882894/pexels-photo-34882894.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "Wild and roaring freshness. The iconic scent of raw masculinity and open blue skies. One of the best-selling fragrances in the world.",
     scentNotes: { top: "Calabrian Bergamot, Pepper", middle: "Lavender, Pink Pepper, Vetiver", base: "Ambroxan, Cedar, Labdanum" },
     rating: 4.9,
@@ -23,7 +24,8 @@ export const products = [
     category: "Men",
     price: 185.00,
     originalPrice: 210.00,
-    image: "https://images.pexels.com/photos/11295329/pexels-photo-11295329.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Actual Bleu de Chanel bottle — confirmed Pexels photo "Close Up Shot of a Bleu De Chanel"
+    image: "https://images.pexels.com/photos/14847180/pexels-photo-14847180.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "A woody aromatic fragrance that embodies a man who refuses to be defined. Timeless Chanel elegance for the modern man.",
     scentNotes: { top: "Citrus, Labdanum", middle: "Ginger, Nutmeg, Jasmine", base: "Sandalwood, Patchouli, Vetiver, Incense" },
     rating: 4.8,
@@ -91,7 +93,8 @@ export const products = [
     category: "Men",
     price: 89.00,
     originalPrice: 115.00,
-    image: "https://images.pexels.com/photos/31132401/pexels-photo-31132401.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Actual Versace bottle — confirmed Pexels photo "Versace Perfume Bottle"
+    image: "https://images.pexels.com/photos/8516275/pexels-photo-8516275.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "Inspired by the Greek god of love. A sensual and luminous fougere of fresh mint, green apple, and tonka bean.",
     scentNotes: { top: "Mint, Green Apple, Lemon", middle: "Tonka Bean, Geranium, Ambroxan", base: "Vanilla, Vetiver, Oakmoss, Cedar" },
     rating: 4.7,
@@ -108,7 +111,8 @@ export const products = [
     category: "Men",
     price: 89.00,
     originalPrice: 115.00,
-    image: "https://images.pexels.com/photos/29805437/pexels-photo-29805437.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Blue/gold luxury men's bottle — visually matches Le Male's iconic blue-gold aesthetic
+    image: "https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "The original iconic fougere. A seductive contrast of lavender, mint, and warm vanilla — masculinity redefined.",
     scentNotes: { top: "Mint, Cardamom", middle: "Lavender, Cinnamon, Orange Blossom", base: "Vanilla, Sandalwood, Amber" },
     rating: 4.7,
@@ -159,7 +163,8 @@ export const products = [
     category: "Men",
     price: 135.00,
     originalPrice: 160.00,
-    image: "https://images.pexels.com/photos/9323886/pexels-photo-9323886.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Dark masculine luxury bottle — matches Chanel Allure Homme Sport's dark sporty bottle
+    image: "https://images.pexels.com/photos/7487831/pexels-photo-7487831.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "Pure vitality and magnetic freshness. The spirit of sport elevated to the heights of Chanel elegance.",
     scentNotes: { top: "Aldehyde, Cedar, Neroli", middle: "Pepper, Elemi", base: "Tonka Bean, Vetiver, White Musk" },
     rating: 4.6,
@@ -193,7 +198,8 @@ export const products = [
     category: "Men",
     price: 340.00,
     originalPrice: 385.00,
-    image: "https://images.pexels.com/photos/16239693/pexels-photo-16239693.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // White/gold ornate luxury bottle — matches Parfums de Marly Layton's cream/gold ornate bottle style
+    image: "https://images.pexels.com/photos/18833913/pexels-photo-18833913.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "Inspired by the English thoroughbreds of Marly. Bright bergamot, sun-warmed apple, and smooth sandalwood.",
     scentNotes: { top: "Bergamot, Lavender", middle: "Jasmine, Geranium, Apple", base: "Sandalwood, Vanilla, Musk" },
     rating: 4.9,
@@ -278,7 +284,8 @@ export const products = [
     category: "Unisex",
     price: 395.00,
     originalPrice: 445.00,
-    image: "https://images.pexels.com/photos/31847823/pexels-photo-31847823.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Gold/warm clear luxury bottle — matches Xerjoff Naxos's warm golden Italian-style bottle
+    image: "https://images.pexels.com/photos/13767420/pexels-photo-13767420.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "The isle of Naxos, ancient and golden. A mythical accord of tobacco, honey, lavender, and warm vanilla.",
     scentNotes: { top: "Bergamot, Lemon", middle: "Lavender, Tobacco", base: "Honey, Vanilla, Sandalwood" },
     rating: 4.9,
@@ -312,7 +319,8 @@ export const products = [
     category: "Women",
     price: 155.00,
     originalPrice: 185.00,
-    image: "https://images.pexels.com/photos/19251919/pexels-photo-19251919.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // Luxury feminine perfume on white/gold fabric — matches YSL Libre's gold/elegant bottle aesthetic
+    image: "https://images.pexels.com/photos/17567999/pexels-photo-17567999.jpeg?auto=compress&cs=tinysrgb&w=600",
     description: "Freedom is the most intoxicating perfume. Lavender from Provence meets Moroccan orange blossom in a daring floral-musk.",
     scentNotes: { top: "Lavender, Mandarin", middle: "Orange Blossom, Jasmine", base: "Vanilla, Musk, Ambergris" },
     rating: 4.8,
