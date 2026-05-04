@@ -8,10 +8,7 @@ const UserProfile = () => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem('currentUser'))
   );
-  const [orders] = useState([
-    { id: '#LP-0081', date: 'Apr 28, 2025', status: 'Delivered', total: 189.00, items: ['Noir Absolu'] },
-    { id: '#LP-0079', date: 'Mar 14, 2025', status: 'Delivered', total: 245.00, items: ['Soir de Jasmin'] },
-  ]);
+  const [orders] = useState([]);
 
   useEffect(() => {
     if (!currentUser) navigate('/login');
@@ -129,7 +126,7 @@ const UserProfile = () => {
                 </div>
               ) : (
                 <div className="text-center py-12">
-                  <p className="font-serif text-xl text-charcoal-soft mb-4">No orders yet</p>
+                  <p className="font-serif text-xl text-charcoal-soft mb-4">You have no orders yet.</p>
                   <Link to="/products" className="btn-gold">
                     Start Shopping
                   </Link>

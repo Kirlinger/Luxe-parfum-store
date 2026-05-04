@@ -74,7 +74,7 @@ const Register = () => {
                   name="name"
                   type="text"
                   required
-                  placeholder="Sophie Laurent"
+                  placeholder="Michael Carter"
                   className="luxury-input"
                 />
               </div>

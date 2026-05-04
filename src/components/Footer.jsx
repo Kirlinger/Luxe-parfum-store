@@ -71,7 +71,7 @@ const Footer = () => (
             <h4 className="font-sans text-xs tracking-[0.3em] uppercase text-gold mb-6 font-semibold">Contact</h4>
             <ul className="space-y-3">
               <li className="font-sans text-sm text-white/50">
-                12 Rue de la Paix<br />Paris, France 75001
+                120 High Street<br />Columbus, OH 43215
               </li>
               <li>
                 <a href="mailto:hello@luxeparfum.com" className="font-sans text-sm text-white/50 hover:text-gold transition-colors duration-200">
@@ -79,8 +79,8 @@ const Footer = () => (
                 </a>
               </li>
               <li>
-                <a href="tel:+33123456789" className="font-sans text-sm text-white/50 hover:text-gold transition-colors duration-200">
-                  +33 1 23 45 67 89
+                <a href="tel:+16145550198" className="font-sans text-sm text-white/50 hover:text-gold transition-colors duration-200">
+                  +1 (614) 555-0198
                 </a>
               </li>
             </ul>

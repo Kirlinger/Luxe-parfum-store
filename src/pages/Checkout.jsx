@@ -39,7 +39,7 @@ const Checkout = () => {
           <h1 className="font-serif text-5xl font-light text-charcoal mb-4">Thank You</h1>
           <div className="w-12 h-px bg-gold mx-auto mb-6" />
           <p className="font-sans text-sm text-charcoal-soft leading-relaxed mb-10">
-            Your order has been received and is being prepared with the utmost care. You will receive a confirmation email shortly. Merci.
+            Your order has been received and is being prepared with the utmost care. You will receive a confirmation email shortly. Thank you.
           </p>
           <button onClick={() => navigate('/')} className="btn-gold">
             Return Home
@@ -94,16 +94,16 @@ const Checkout = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
                       <label className={labelClass}>First Name</label>
-                      <input required placeholder="Sophie" className={inputClass} />
+                      <input required placeholder="Michael" className={inputClass} />
                     </div>
                     <div>
                       <label className={labelClass}>Last Name</label>
-                      <input required placeholder="Laurent" className={inputClass} />
+                      <input required placeholder="Carter" className={inputClass} />
                     </div>
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Email Address</label>
-                    <input type="email" required placeholder="sophie@example.com" className={inputClass} />
+                    <input type="email" required placeholder="michael@example.com" className={inputClass} />
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Phone Number</label>
@@ -111,20 +111,20 @@ const Checkout = () => {
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Street Address</label>
-                    <input required placeholder="12 Rue de la Paix" className={inputClass} />
+                    <input required placeholder="120 High Street" className={inputClass} />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     <div>
                       <label className={labelClass}>City</label>
-                      <input required placeholder="Paris" className={inputClass} />
+                      <input required placeholder="Columbus" className={inputClass} />
                     </div>
                     <div>
-                      <label className={labelClass}>State / Region</label>
-                      <input required placeholder="Île-de-France" className={inputClass} />
+                      <label className={labelClass}>State</label>
+                      <input required placeholder="Ohio" className={inputClass} />
                     </div>
                     <div>
-                      <label className={labelClass}>ZIP / Postal</label>
-                      <input required placeholder="75001" className={inputClass} />
+                      <label className={labelClass}>ZIP Code</label>
+                      <input required placeholder="43215" className={inputClass} />
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ const Checkout = () => {
                   <h2 className="font-serif text-2xl text-charcoal mb-8">Payment Details</h2>
                   <div className="mb-5">
                     <label className={labelClass}>Cardholder Name</label>
-                    <input required placeholder="Sophie Laurent" className={inputClass} />
+                    <input required placeholder="Michael Carter" className={inputClass} />
                   </div>
                   <div className="mb-5">
                     <label className={labelClass}>Card Number</label>

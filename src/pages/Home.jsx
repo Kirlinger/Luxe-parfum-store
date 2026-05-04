@@ -8,22 +8,22 @@ import { products } from '../data/products';
 const testimonials = [
   {
     id: 1,
-    name: "Élise Fontaine",
-    role: "Fashion Editor, Paris",
+    name: "Daniel Brooks",
+    role: "Watch Collector, New York",
     text: "Luxe Parfum is the only house that truly understands what luxury means. Noir Absolu has become my signature scent.",
     rating: 5,
   },
   {
     id: 2,
-    name: "James Whitmore",
-    role: "Watch Collector, London",
+    name: "James Anderson",
+    role: "Executive, Chicago",
     text: "Oud Royale is exceptional — complex, dignified, and utterly unique. Worth every penny and more.",
     rating: 5,
   },
   {
     id: 3,
-    name: "Sophia Laurent",
-    role: "Art Director, Milano",
+    name: "Michael Carter",
+    role: "Creative Director, Los Angeles",
     text: "Soir de Jasmin stopped me in my tracks at a gallery opening. Three people asked what I was wearing.",
     rating: 5,
   },
@@ -37,7 +37,7 @@ const whyChooseUs = [
       </svg>
     ),
     title: "Artisan Craftsmanship",
-    desc: "Each fragrance is handcrafted by master perfumers with decades of expertise in Grasse and Paris.",
+    desc: "Each fragrance is handcrafted by master perfumers with decades of expertise in New York and Los Angeles.",
   },
   {
     icon: (
@@ -231,13 +231,13 @@ const Home = () => {
               </h2>
               <div className="w-12 h-px bg-gold mb-6" />
               <p className="font-sans text-sm text-white/60 leading-relaxed mb-5">
-                Since 1987, Luxe Parfum has been synonymous with the highest standards of French perfumery. Born from a vision to democratize niche luxury, our maison sources only the finest ingredients — Bulgarian roses, Cambodian oud, Indian sandalwood, and Grasse jasmine.
+                Since 1987, Luxe Parfum has been synonymous with the highest standards of luxury perfumery. Born from a vision to democratize niche luxury, our house sources only the finest ingredients — Bulgarian roses, Cambodian oud, Indian sandalwood, and Egyptian jasmine.
               </p>
               <p className="font-sans text-sm text-white/60 leading-relaxed mb-8">
                 Each fragrance is a meticulously composed olfactory poem. We believe that a truly great perfume changes how you experience the world — and how the world experiences you.
               </p>
               <Link to="/products" className="btn-gold">
-                Discover Our Maison
+                Discover Our Story
               </Link>
             </div>
           </div>
@@ -314,8 +314,8 @@ const Home = () => {
               <div className="space-y-5">
                 {[
                   { label: 'Email', value: 'hello@luxeparfum.com' },
-                  { label: 'Phone', value: '+33 1 23 45 67 89' },
-                  { label: 'Address', value: '12 Rue de la Paix, Paris 75001' },
+                  { label: 'Phone', value: '+1 (614) 555-0198' },
+                  { label: 'Address', value: '120 High Street, Columbus, OH 43215' },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex gap-4">
                     <span className="font-sans text-xs tracking-widest uppercase text-gold font-semibold w-20 pt-0.5">{label}</span>
@@ -328,11 +328,11 @@ const Home = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="luxury-label">First Name</label>
-                  <input className="luxury-input" placeholder="Sophie" />
+                  <input className="luxury-input" placeholder="Michael" />
                 </div>
                 <div>
                   <label className="luxury-label">Last Name</label>
-                  <input className="luxury-input" placeholder="Laurent" />
+                  <input className="luxury-input" placeholder="Carter" />
                 </div>
               </div>
               <div>
