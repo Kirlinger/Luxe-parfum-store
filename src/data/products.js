@@ -72,7 +72,7 @@ export const products = [
   },
   {
     id: 6,
-    name: "Marc Jacobs Daisy Love",
+    name: "Daisy Love",
     brand: "Marc Jacobs",
     category: "Women",
     price: 98.00,
