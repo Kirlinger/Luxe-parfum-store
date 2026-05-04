@@ -204,6 +204,7 @@ const Home = () => {
         {bestSellersBgs.map((url, i) => (
           <div
             key={url}
+            aria-hidden="true"
             className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
             style={{
               backgroundImage: `url('${url}')`,
