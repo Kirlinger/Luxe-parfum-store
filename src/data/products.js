@@ -24,8 +24,8 @@ export const products = [
     category: "Men",
     price: 185.00,
     originalPrice: 210.00,
-    // Confirmed Pexels photo: "Close Up Shot of a Bleu De Chanel"
-    image: "https://images.pexels.com/photos/14847180/pexels-photo-14847180.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // User-provided Bleu de Chanel bottle photo
+    image: "https://github.com/user-attachments/assets/23187be4-1238-49e1-8270-58c63298889d",
     description: "A woody aromatic fragrance that embodies a man who refuses to be defined. Timeless Chanel elegance for the modern man.",
     scentNotes: { top: "Citrus, Labdanum", middle: "Ginger, Nutmeg, Jasmine", base: "Sandalwood, Patchouli, Vetiver, Incense" },
     rating: 4.8,
