@@ -247,16 +247,78 @@ const Home = () => {
                   e.currentTarget.src = 'https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80';
                 }}
               />
-              <div className="absolute -bottom-6 -right-6 w-48 h-48 border border-gold/30 hidden lg:block overflow-hidden">
-                <img
-                  src="https://github.com/user-attachments/assets/9bcf87c5-a357-4359-ad34-b37d7222564b"
-                  alt="Tom Ford Tobacco Vanille — luxury perfume detail"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'https://images.pexels.com/photos/34882894/pexels-photo-34882894.jpeg?auto=compress&cs=tinysrgb&w=400';
-                  }}
-                />
+              <div
+                className="absolute -bottom-6 -right-6 w-48 h-48 hidden lg:flex items-center justify-center overflow-hidden transition-transform duration-700 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(145deg, #111 0%, #1e1a14 60%, #111 100%)',
+                  border: '1px solid rgba(201,169,110,0.45)',
+                  boxShadow: '0 0 28px rgba(201,169,110,0.18), inset 0 0 18px rgba(201,169,110,0.07)',
+                }}
+              >
+                {/* Luxury brand mark — inline SVG */}
+                <svg
+                  viewBox="0 0 192 192"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-full h-full"
+                  aria-label="Luxe Parfum brand mark"
+                >
+                  {/* Radial glow */}
+                  <defs>
+                    <radialGradient id="lglow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#C9A96E" stopOpacity="0.18" />
+                      <stop offset="100%" stopColor="#C9A96E" stopOpacity="0" />
+                    </radialGradient>
+                    <linearGradient id="lgrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#E8D5B0" />
+                      <stop offset="50%" stopColor="#C9A96E" />
+                      <stop offset="100%" stopColor="#A07B40" />
+                    </linearGradient>
+                  </defs>
+                  {/* Background glow */}
+                  <circle cx="96" cy="96" r="88" fill="url(#lglow)" />
+                  {/* Outer decorative ring */}
+                  <circle cx="96" cy="96" r="78" fill="none" stroke="url(#lgrad)" strokeWidth="0.6" strokeDasharray="3 5" />
+                  {/* Inner decorative ring */}
+                  <circle cx="96" cy="96" r="66" fill="none" stroke="#C9A96E" strokeWidth="0.4" opacity="0.5" />
+                  {/* Horizontal rules */}
+                  <line x1="18" y1="96" x2="55" y2="96" stroke="url(#lgrad)" strokeWidth="0.8" />
+                  <line x1="137" y1="96" x2="174" y2="96" stroke="url(#lgrad)" strokeWidth="0.8" />
+                  {/* Diamond accent left */}
+                  <polygon points="51,96 55,92 59,96 55,100" fill="#C9A96E" opacity="0.8" />
+                  {/* Diamond accent right */}
+                  <polygon points="133,96 137,92 141,96 137,100" fill="#C9A96E" opacity="0.8" />
+                  {/* Monogram "LP" */}
+                  <text
+                    x="96"
+                    y="108"
+                    textAnchor="middle"
+                    fontFamily="Georgia, serif"
+                    fontSize="42"
+                    fontWeight="300"
+                    letterSpacing="6"
+                    fill="url(#lgrad)"
+                  >
+                    LP
+                  </text>
+                  {/* Wordmark beneath */}
+                  <text
+                    x="96"
+                    y="128"
+                    textAnchor="middle"
+                    fontFamily="'Montserrat', sans-serif"
+                    fontSize="7"
+                    fontWeight="400"
+                    letterSpacing="5"
+                    fill="#C9A96E"
+                    opacity="0.75"
+                  >
+                    LUXE PARFUM
+                  </text>
+                  {/* Top ornament */}
+                  <line x1="79" y1="62" x2="113" y2="62" stroke="#C9A96E" strokeWidth="0.5" opacity="0.6" />
+                  <circle cx="96" cy="58" r="2.5" fill="none" stroke="#C9A96E" strokeWidth="0.7" opacity="0.7" />
+                  <circle cx="96" cy="58" r="1" fill="#C9A96E" opacity="0.6" />
+                </svg>
               </div>
             </div>
             <div>
